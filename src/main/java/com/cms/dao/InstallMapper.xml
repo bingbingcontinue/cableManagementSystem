@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.InstallMapper">
+
+    <insert id="addInstallation" parameterType="Installation">
+        insert into cablemanagementsystem.installation (cableID,installationDate,operator1,operator2,operator3)
+        values (#{cableID},#{installationDate},#{operator1},#{operator2},#{operator3});
+    </insert>
+
+
+    <delete id="deleteInstallationById" parameterType="int">
+        delete from cablemanagementsystem.installation where cableID = #{cableID};
+    </delete>
+
+    <update id="updateInstallation" parameterType="Installation">
+        update cablemanagementsystem.installation
+        set   installationDate=#{installationDate},operator1=#{operator1},operator2=#{operator2},operator3=#{operator3}
+        where cableID=#{cableID};
+    </update>
+
+    <select id="queryInstallationById" resultType="Installation">
+        select * from cablemanagementsystem.installation
+        where cableID=#{cableID}
+    </select>
+
+    <select id="qureyAllInstallations" resultType="Installation">
+        select * from cablemanagementsystem.installation
+    </select>
+
+    
+
+</mapper>

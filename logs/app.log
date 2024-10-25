@@ -1,0 +1,4 @@
+2024-10-25 08:33:23.102 [main] INFO  o.a.s.c.IniSecurityManagerFactory - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2024-10-25 08:35:16.283 [main] INFO  o.a.s.c.IniSecurityManagerFactory - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2024-10-25 09:04:41.225 [main] INFO  o.a.s.c.IniSecurityManagerFactory - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2024-10-25 09:04:41.257 [main] INFO  o.a.s.s.m.AbstractValidatingSessionManager - Enabling session validation scheduler...

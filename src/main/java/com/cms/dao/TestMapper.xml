@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.TestMapper">
+
+    <insert id="addTest" parameterType="Test">
+        insert into cablemanagementsystem.test (cableID,testdate,testresult,description,operator1,operator2,operator3)
+        values (#{cableID},#{testdate},#{testresult},#{description},#{operator1},#{operator2},#{operator3});
+    </insert>
+
+
+    <delete id="deleteTestBycableId" parameterType="int">
+        delete from cablemanagementsystem.test where cableID = #{cableID};
+    </delete>
+
+    <update id="updateTest" parameterType="Test">
+        update cablemanagementsystem.test
+        set testdate=#{testdate},
+            testresult=#{testresult},
+            description=#{description},
+            operator1=#{operator1},
+            operator2=#{operator2},
+            operator3=#{operator3}
+        where cableID=#{cableID};
+    </update>
+
+
+    <select id="queryTestBycableId" resultType="Test">
+        select * from cablemanagementsystem.test
+        where cableID=#{cableID}
+    </select>
+
+    <select id="qureyAllTest" resultType="Test">
+        select * from cablemanagementsystem.test
+    </select>
+
+    
+
+</mapper>
