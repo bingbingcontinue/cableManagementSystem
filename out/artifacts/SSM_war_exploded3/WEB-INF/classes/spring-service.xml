@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--扫描service下的包--><!--<context:component-scan>: 配置 Spring 自动扫描指定包（com.cms.service）下的组件（如带有 @Service 注解的类），并将其注册为 Spring Bean-->
+    <context:component-scan base-package="com.cms.service"></context:component-scan>
+
+<!--将我们的所有的业务类注入到spring 可以通过配置或者注解实现-->
+<!--    为每个服务实现类定义一个 Spring Bean。-->
+<!--    通过 <property> 标签注入相应的 Mapper Bean。例如，BookServiceImpl 依赖于 bookMapper，这通过 ref 属性进行引用。-->
+    <bean id="BookServiceImpl" class="com.cms.service.BookServiceImpl">
+        <property name="bookMapper" ref="bookMapper"></property>
+    </bean>
+    <bean id="CableServiceImpl" class="com.cms.service.CableServiceImpl">
+        <property name="cableMapper" ref="cableMapper"></property>
+    </bean>
+    <bean id="ManufactureServiceImpl" class="com.cms.service.ManufactureServiceImpl">
+        <property name="manufactureMapper" ref="manufactureMapper"></property>
+    </bean>
+    <bean id="InterfaceServiceImpl" class="com.cms.service.InterfaceServiceImpl">
+            <property name="interfaceMapper" ref="interfaceMapper"></property>
+    </bean>
+    <bean id="TestServiceImpl" class="com.cms.service.TestServiceImpl">
+        <property name="testMapper" ref="testMapper"></property>
+    </bean>
+    <bean id="InstallServiceImpl" class="com.cms.service.InstallServiceImpl">
+        <property name="installMapper" ref="installMapper"></property>
+    </bean>
+    <bean id="MaintenanceServiceImpl" class="com.cms.service.MaintenanceServiceImpl">
+        <property name="maintenanceMapper" ref="maintenanceMapper"></property>
+    </bean>
+    <bean id="DrawingsServiceImpl" class="com.cms.service.DrawingsServiceImpl">
+        <property name="drawingsMapper" ref="drawingsMapper"></property>
+    </bean>
+    <bean id="UserServiceImpl" class="com.cms.service.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"></property>
+    </bean>
+
+
+
+
+
+
+    <!--声明式事务配置-->
+<!--    定义了一个事务管理器 Bean，使用 DataSourceTransactionManager 来处理基于 JDBC 的事务。-->
+<!--    通过 dataSource 属性将数据源注入到事务管理器中-->
+    <bean id="TransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+</beans>

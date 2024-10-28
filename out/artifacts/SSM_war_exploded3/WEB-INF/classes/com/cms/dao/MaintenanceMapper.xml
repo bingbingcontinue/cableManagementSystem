@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.dao.MaintenanceMapper">
+
+    <insert id="addMaintenance" parameterType="maintenance">
+        insert into cablemanagementsystem.maintenance (cableID,faultdate,faultDescription,repairdate,repairDescription,operator1,operator2,operator3,status,cost)
+        values (#{cableID},#{faultdate},#{faultDescription},#{repairdate},#{repairDescription},#{operator1},#{operator2},#{operator3},#{status},#{cost});
+    </insert>
+    <delete id="deleteMaintenanceById" parameterType="int">
+        delete from cablemanagementsystem.maintenance where id = #{id};
+    </delete>
+
+    <update id="updateMaintenance" parameterType="maintenance">
+        update cablemanagementsystem.maintenance
+        set   faultdate=#{faultdate}, faultDescription=#{faultDescription}, repairdate=#{repairdate},repairDescription=#{repairDescription},
+              operator1=#{operator1},operator2=#{operator2}, operator3=#{operator3}, status=#{status},cost=#{cost},cableID=#{cableID}
+        where id = #{id};
+    </update>
+
+    <select id="queryMaintenanceById" resultType="maintenance">
+        select * from cablemanagementsystem.maintenance
+        where id = #{id}
+    </select>
+
+    <select id="qureyAllMaintenance" resultType="maintenance">
+        select * from cablemanagementsystem.maintenance
+    </select>
+    <select id="queryMaintenanceByStatus" resultType="maintenance">
+        select * from cablemanagementsystem.maintenance
+        where status = #{status}
+    </select>
+
+    <select id="queryMaintenanceBycolumn" resultType="maintenance">
+        select * from cablemanagementsystem.maintenance
+        where ${queryColumn} = #{queryParam}
+    </select>
+</mapper>
