@@ -48,7 +48,4 @@
         <property name="basePackage" value="com.cms.dao"></property>
     </bean>
 
-
-
-    <!--    4:关联数据库文件-->
 </beans>

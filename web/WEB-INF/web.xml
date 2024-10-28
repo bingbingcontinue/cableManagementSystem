@@ -4,7 +4,37 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-<!--DispatchServlet-->
+<!--    &lt;!&ndash; shiro配置 &ndash;&gt;-->
+<!--    &lt;!&ndash; shiro过滤器定义 &ndash;&gt;-->
+<!--    <filter>-->
+<!--        <filter-name>shiroFilter</filter-name>-->
+<!--        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+<!--        <init-param>-->
+<!--            &lt;!&ndash; 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 &ndash;&gt;-->
+<!--            <param-name>targetFilterLifecycle</param-name>-->
+<!--            <param-value>true</param-value>-->
+<!--        </init-param>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>shiroFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
+<!--    <listener>&lt;!&ndash;在 web.xml 中注册 ContextLoaderListener，以便 Spring 能够初始化根应用上下文：&ndash;&gt;-->
+<!--        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+<!--    </listener>-->
+
+
+<!--    <filter>-->
+<!--        <filter-name>springSecurityFilterChain</filter-name>-->
+<!--        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>springSecurityFilterChain</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
+    <!--DispatchServlet-->
     <servlet>
         <servlet-name>springmvc</servlet-name> <!-- 定义了 Servlet 的名称，这里是 springmvc。这个名称可以在其他地方引用-->
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> <!-- 这是 Spring MVC 的核心组件，用于处理 HTTP 请求和响应-->
@@ -12,6 +42,7 @@
             <param-name>contextConfigLocation</param-name><!--，这里设置了一个名为 contextConfigLocation 的参数。这个参数指定了 Spring 应用上下文配置文件的位置 -->
             <param-value>
                 classpath:applicationContext.xml <!-- classpath:applicationContext.xml 表示配置文件位于类路径下。-->
+<!--                classpath:/WEB-INF/classes/applicationContext.xml-->
             </param-value>
 
         </init-param>
@@ -23,15 +54,7 @@
         <url-pattern>/</url-pattern><!-- 定义了 Servlet 处理的 URL 模式。这里的 "/" 表示这个 Servlet 将处理所有传入的请求（即根路径及其所有子路径）-->
     </servlet-mapping>
 
-    <!-- shiro配置 -->
-    <filter>
-        <filter-name>shiroFilter</filter-name>
-        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>shiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+
 
 <!--乱码过滤-->
     <filter>

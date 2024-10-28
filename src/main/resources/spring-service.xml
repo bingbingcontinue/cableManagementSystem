@@ -40,17 +40,13 @@
     <bean id="UserServiceImpl" class="com.cms.service.UserServiceImpl">
         <property name="userMapper" ref="userMapper"></property>
     </bean>
-    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="myrealm"/>
-    </bean>
-
-    <bean id="myrealm" class="com.cms.Utils.MyRealm"/>
 
 
 
 
 
-<!--声明式事务配置-->
+
+    <!--声明式事务配置-->
 <!--    定义了一个事务管理器 Bean，使用 DataSourceTransactionManager 来处理基于 JDBC 的事务。-->
 <!--    通过 dataSource 属性将数据源注入到事务管理器中-->
     <bean id="TransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

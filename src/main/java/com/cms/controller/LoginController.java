@@ -27,29 +27,17 @@ public class LoginController {
     @Autowired
     @Qualifier("UserServiceImpl")
     private UserService userService;
-    @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 
-        try {
-            currentUser.login(token);
-            return "redirect:/home";  // 登录成功跳转
-        } catch (AuthenticationException e) {
-            return "login";  // 登录失败
+        @RequestMapping("/login")
+    public String login(@RequestParam String username,
+                                        @RequestParam String password) {
+        User user = userService.findByUsername(username);
+        if (user != null && user.getPassword().equals(password)) {
+            return "firstpage";
         }
-    }
+        return "Invalid credentials";
 
-    //    @RequestMapping("/login")
-//    public String login(@RequestParam String username,
-//                                        @RequestParam String password) {
-//        User user = userService.findByUsername(username);
-//        if (user != null && user.getPassword().equals(password)) {
-//            return "firstpage";
-//        }
-//        return "Invalid credentials";
-//
-//    }
+    }
     @RequestMapping("/registerfisrt")
     public  String registerfisrt(){
         return "login/register";
