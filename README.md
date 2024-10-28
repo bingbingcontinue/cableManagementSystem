@@ -1,0 +1,1 @@
+这是一个数据库管理系统，采用mybatis+spring+springmvc架构，并使用了Apache Shiro安全框架
